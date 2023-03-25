@@ -33,6 +33,16 @@ function getRandomQuote() {
  * `printQuote` function
 ***/
 
+//here is the code that changes the background color with every new quote:
+const body = document.querySelector("body");
+
+function randomColor() {
+  let r = Math.floor(Math.random() * 255) + 1;
+  let g = Math.floor(Math.random() * 255) + 1;
+  let b = Math.floor(Math.random() * 255) + 1;
+  
+  return `rgb(${r}, ${g}, ${b})`
+};
 
 
 function printQuote() {
@@ -42,7 +52,11 @@ function printQuote() {
   <p class="source">${quote.source}<span class="citation">${quote.citation}</span><span class="year">${quote.year}</span><span class="year">${quote.distributer}</span></p>`
 
   document.getElementById('quote-box').innerHTML = text; 
+  body.style.backgroundColor = randomColor();
 };
+
+//this function allows the quote to automatically change every 10 seconds
+setInterval(printQuote, 10000);
 
 
 /***
